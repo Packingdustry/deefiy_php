@@ -7,6 +7,8 @@ class AlbumTrack extends AudioTrack{
 
     public function __construct(string $titre, string $nomFichier) {
         parent::__construct($titre, $nomFichier);
+        $this->album="Rubi";
+        $this->numeroPiste=3;
     }
 }
 ?>

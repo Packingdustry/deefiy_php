@@ -12,6 +12,8 @@
             require_once "AudioTrack.php";
             require_once "PodcastTrack.php";
             require_once "AlbumTrackRenderer.php";
+            require_once "AudioTrackRenderer.php";
+            require_once "PodcastRenderer.php";
 
             $track1 = new AlbumTrack("Rubi", "rubi.mp3");
             $track2 = new AlbumTrack("Encore une", "encore_une.mp3");
@@ -29,6 +31,16 @@
             $podcast1 = new PodcastTrack("Hondelatte raconte", "hondelatte_raconte.mp3");
             echo $podcast1;
             var_dump($podcast1);
+
+            $albumRenderer = new AlbumTrackRenderer($track1);
+            $podcastRenderer = new PodcastRenderer($podcast1);
+            echo "<br><br><br>";
+            echo $albumRenderer->render(1);
+            echo $podcastRenderer->render(1);
+
+            echo "<br><br><br>";
+            echo $podcastRenderer->render(2);
+            echo $albumRenderer->render(2);
         ?>
     </body>
 </html>
