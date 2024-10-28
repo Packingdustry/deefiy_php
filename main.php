@@ -9,6 +9,9 @@
     <body>
         <?php
             require_once "AlbumTrack.php";
+            require_once "AudioTrack.php";
+            require_once "PodcastTrack.php";
+            require_once "AlbumTrackRenderer.php";
 
             $track1 = new AlbumTrack("Rubi", "rubi.mp3");
             $track2 = new AlbumTrack("Encore une", "encore_une.mp3");
@@ -23,7 +26,9 @@
             var_dump($track1);
             // print_r n'affiche que les attributs initialisés, tandis que var_dump affiche tout. 
 
-            
+            $podcast1 = new PodcastTrack("Hondelatte raconte", "hondelatte_raconte.mp3");
+            echo $podcast1;
+            var_dump($podcast1);
         ?>
     </body>
 </html>

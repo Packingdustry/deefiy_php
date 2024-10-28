@@ -1,6 +1,7 @@
 <?php
 declare(strict_types=1);
 require_once "AlbumTrack.php";
+require_once "AudioTrack.php";
 
 class AlbumTrackRenderer {
     private AlbumTrack $albumTrack;
