@@ -1,0 +1,46 @@
+@startuml
+class AlbumTrack extends AudioTrack {
+  +album: string
+  +numeroPiste: int
+  +__construct(titre: string, nomFichier: string)
+}
+
+class PodcastTrack extends AudioTrack {
+  +__construct(titre: string, nomFichier: string)
+}
+
+class AudioTrack {
+  +titre: string
+  +auteur: string
+  +genre: string
+  +nomFichier: string
+  +date: int
+  +duree: int
+  +__construct(titre: string, nomFichier: string)
+  +__toString(): String
+}
+
+interface Renderer {
+  +COMPACT=1
+  +LONG=2
+  +render(selector: int): string
+}
+
+class AudioTrackRenderer implements Renderer {
+  +__construct(AudioTrack)
+  +render(selector: int): string
+  -renderCompact(): string
+  #renderLong(): string
+}
+
+class AlbumTrackRenderer extends AudioTrackRenderer implements Renderer {
+  +__construct(AlbumTrack)
+  #renderLong(): string
+}
+
+class PodcastRenderer extends AudioTrackRenderer implements Renderer {
+  +__construct(PodcastTrack)
+}
+
+AudioTrackRenderer "1"-left-> "1" AudioTrack: "+audioTrack"
+@enduml
