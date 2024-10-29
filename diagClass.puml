@@ -1,23 +1,31 @@
 @startuml
 class AlbumTrack extends AudioTrack {
-  +album: string
-  +numeroPiste: int
+  #album: string
+  #numeroPiste: int
   +__construct(titre: string, nomFichier: string)
+  +jsonSerialize(): array
 }
 
 class PodcastTrack extends AudioTrack {
   +__construct(titre: string, nomFichier: string)
 }
 
-class AudioTrack {
-  +titre: string
-  +auteur: string
-  +genre: string
-  +nomFichier: string
-  +date: int
-  +duree: int
+interface JsonSerializable {
+    +jsonSerialize(): array
+}
+
+class AudioTrack implements JsonSerializable {
+  #titre: string
+  #auteur: string
+  #genre: string
+  #nomFichier: string
+  #date: int
+  #duree: int
   +__construct(titre: string, nomFichier: string)
   +__toString(): String
+  +__get(name: string): mixed
+  +__set(name: string, value: mixed)
+  +jsonSerialize(): array
 }
 
 interface Renderer {
@@ -33,14 +41,18 @@ class AudioTrackRenderer implements Renderer {
   #renderLong(): string
 }
 
-class AlbumTrackRenderer extends AudioTrackRenderer implements Renderer {
+class AlbumTrackRenderer extends AudioTrackRenderer {
   +__construct(AlbumTrack)
   #renderLong(): string
 }
 
-class PodcastRenderer extends AudioTrackRenderer implements Renderer {
+class PodcastRenderer extends AudioTrackRenderer {
   +__construct(PodcastTrack)
 }
+
+exception Exception
+exception InvalidPropertyNameException extends Exception
+exception InvalidPropertyValueException extends Exception
 
 AudioTrackRenderer "1"-left-> "1" AudioTrack: "+audioTrack"
 @enduml

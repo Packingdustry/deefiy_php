@@ -5,7 +5,7 @@ require_once "AudioTrack.php";
 require_once "Renderer.php";
 require_once "AudioTrackRenderer.php";
 
-class AlbumTrackRenderer extends AudioTrackRenderer implements Renderer{
+class AlbumTrackRenderer extends AudioTrackRenderer {
 
     public function __construct(AlbumTrack $albumTrack) {
         parent::__construct($albumTrack);

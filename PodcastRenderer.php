@@ -5,7 +5,7 @@ require_once "PodcastTrack.php";
 require_once "Renderer.php";
 require_once "AudioTrackRenderer.php";
 
-class PodcastRenderer extends AudioTrackRenderer implements Renderer {
+class PodcastRenderer extends AudioTrackRenderer {
     private PodcastTrack $podcastTrack;
 
     public function __construct(PodcastTrack $podcastTrack) {

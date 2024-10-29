@@ -29,18 +29,22 @@
             // print_r n'affiche que les attributs initialisés, tandis que var_dump affiche tout. 
 
             $podcast1 = new PodcastTrack("Hondelatte raconte", "hondelatte_raconte.mp3");
-            echo $podcast1;
+            echo "<br>\$podcast1 : $podcast1<br>";
             var_dump($podcast1);
 
-            $albumRenderer = new AlbumTrackRenderer($track1);
-            $podcastRenderer = new PodcastRenderer($podcast1);
-            echo "<br><br><br>";
-            echo $albumRenderer->render(1);
-            echo $podcastRenderer->render(1);
+            try {
+                $albumRenderer = new AlbumTrackRenderer($track1);
+                $podcastRenderer = new PodcastRenderer($podcast1);
+                echo "<br><br>";
+                echo $albumRenderer->render(1);
+                echo $podcastRenderer->render(1);
 
-            echo "<br><br><br>";
-            echo $podcastRenderer->render(2);
-            echo $albumRenderer->render(2);
+                echo "<br>";
+                echo $podcastRenderer->render(2);
+                echo $albumRenderer->render(2);
+            } catch (Exception $e) {
+                echo "<p>Problème :  {$e->getMessage()}. </p>";
+            }
         ?>
     </body>
 </html>
