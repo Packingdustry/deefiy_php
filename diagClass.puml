@@ -50,9 +50,35 @@ class PodcastRenderer extends AudioTrackRenderer {
   +__construct(PodcastTrack)
 }
 
+class AudioList {
+  -nom: string
+  #nbPistes: int
+  #dureeTotale: int
+  +__construct(nom: string, pistes: ?array)
+  +__get(name: string): mixed
+}
+
+class Album extends AudioList {
+  -artiste: string
+  -dateSortie: int
+  +__construct(nom: string, pistes: array)
+  +__set(name: string, value: int|string)
+}
+
+class Playlist extends AudioList {
+  +ajouterPiste(AudioTrack)
+  +ajouterPistes(pistes: array)
+  +retirerPiste(AudioTrack)
+}
+
 exception Exception
 exception InvalidPropertyNameException extends Exception
 exception InvalidPropertyValueException extends Exception
 
-AudioTrackRenderer "1"-left-> "1" AudioTrack: "+audioTrack"
+AudioTrackRenderer "1"-right-> "1" AudioTrack: "+audioTrack"
+AudioList "*" -left-> "*" AudioTrack: "-pistes"
+
+note right of Album::__set
+  modifie seulement l'artiste et la date de sortie
+end note
 @enduml
