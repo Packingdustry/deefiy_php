@@ -74,8 +74,6 @@ class Playlist extends AudioList {
 class AudioListRenderer implements Renderer {
   +__construct(AudioList)
   +render(selector: int): string
-  -renderCompact(): string
-  -renderLong(): string
 }
 
 exception Exception
