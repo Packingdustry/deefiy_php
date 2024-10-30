@@ -6,7 +6,7 @@ require_once "AlbumTrack.php";
 require_once "Renderer.php";
 
 class AudioTrackRenderer implements Renderer {
-    public AudioTrack $audioTrack;
+    protected AudioTrack $audioTrack;
 
     public function __construct(AudioTrack $audioTrack) {
         $this->audioTrack = $audioTrack;

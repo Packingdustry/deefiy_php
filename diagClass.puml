@@ -71,11 +71,19 @@ class Playlist extends AudioList {
   +retirerPiste(AudioTrack)
 }
 
+class AudioListRenderer implements Renderer {
+  +__construct(AudioList)
+  +render(selector: int): string
+  -renderCompact(): string
+  -renderLong(): string
+}
+
 exception Exception
 exception InvalidPropertyNameException extends Exception
 exception InvalidPropertyValueException extends Exception
 
-AudioTrackRenderer "1"-right-> "1" AudioTrack: "+audioTrack"
+AudioTrackRenderer "1"--> "1" AudioTrack: "#audioTrack"
+AudioListRenderer "1"--> "1" AudioList: "-audioList"
 AudioList "*" -left-> "*" AudioTrack: "-pistes"
 
 note right of Album::__set
